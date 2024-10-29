@@ -20,5 +20,5 @@ test('create an product',async ()=>{
         productPrice:1
     })
 
-    expect(data.name).toEqual('anderson')
+    expect(data.data.name).toEqual('anderson')
 })

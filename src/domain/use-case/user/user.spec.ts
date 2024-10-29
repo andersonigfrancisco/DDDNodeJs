@@ -19,5 +19,5 @@ test('create an product',async ()=>{
         UserPassword:"teste",
     })
 
-    expect(data.password).toEqual('teste')
+    expect(data.data.password).toEqual('teste')
 })

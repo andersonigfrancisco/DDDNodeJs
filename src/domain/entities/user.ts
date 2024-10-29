@@ -20,10 +20,7 @@ export class User extends  Entity<UserProps>{
         props:Optional<UserProps,'createdAt'>, 
         id?:UniqueEntityId)
         {
-        const data = new User({
-            ...props,
-            createdAt: new Date()
-        },id)
+        const data = new User({...props,createdAt: new Date()},id)
 
         return data;
     }

@@ -21,10 +21,7 @@ export class Product extends Entity<ProductProps>{
         props:Optional<ProductProps,'createdAt'>, 
         id?:UniqueEntityId)
         {
-        const data = new Product({
-            ...props,
-            createdAt: new Date()
-        },id)
+        const data = new Product({...props,createdAt: new Date() },id)
 
         return data;
     }
