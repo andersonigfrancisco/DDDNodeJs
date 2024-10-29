@@ -16,7 +16,7 @@ export class UserUseCase{
 
     async execute({UserName,UserEmail,UserPassword}:UserUseCaseRequest)
     {
-        const data = new User({
+        const data =  User.create({
             email:UserEmail,
             name:UserName,
             password:UserPassword

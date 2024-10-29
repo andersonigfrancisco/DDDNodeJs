@@ -16,13 +16,15 @@ export class ProductUseCase{
 
     async execute({productName,productDescription,productCategory,productPrice}:ProductUserCaseRequeste){
         
-        const data = new Product({
+        const data = Product.create({
             category:productCategory,
             description:productDescription,
             name:productName,
-            price:productPrice,
+            price:productPrice
         })
 
-        return await this.productRepository.create(data)
+        await this.productRepository.create(data)
+
+        return data
     }
 }
