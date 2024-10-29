@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { Entity } from "../../cors/entity";
 
 interface UserProps{
     name: string;
@@ -6,17 +6,4 @@ interface UserProps{
     email: string;
 }
 
-export class User{
-    
-    public name: string;
-    public password:string;
-    public email: string;
-    public id : string;
-
-    constructor(props:UserProps, id?:string){
-        this.name=props.name;
-        this.password=props.password;
-        this.email=props.email;
-        this.id= id ?? randomUUID();
-    }
-}
+export class User extends  Entity<UserProps>{}
