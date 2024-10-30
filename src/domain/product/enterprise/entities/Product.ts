@@ -4,7 +4,6 @@ import { UniqueEntityId } from '@/cors/unique-entity-id'
 import { CreateProductDTO } from '@/domain/product/shared/product-dtos'
 
 
-
 export class Product extends Entity<CreateProductDTO> {
   get category() {
     return this.props.category
@@ -62,4 +61,17 @@ export class Product extends Entity<CreateProductDTO> {
 
     return data
   }
+
+
+  static mapToProductEntity(productData: any): Product {
+    return this.create({
+        id: productData.id,
+        name: productData.name,
+        description: productData.description,
+        price: productData.price,
+        category: productData.category,
+        createdAt: productData.createdAt,
+        updatedAt: productData.updatedAt
+    }, productData.id);
+}
 }

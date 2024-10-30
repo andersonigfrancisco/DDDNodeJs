@@ -19,8 +19,6 @@ describe('fetch Product', () => {
 
     const result = await sut.execute({page:1,limit:20})
 
-    console.log(result.value?.product)
-
     expect(result.value?.product).toEqual([
         expect.objectContaining({createdAt: new Date(2022,0,23)}),
         expect.objectContaining({createdAt: new Date(2022,0,20)}),

@@ -3,6 +3,8 @@ import { ProductRepository } from '@/domain/product/application/repositories/pro
 import { Product } from '@/domain/product/enterprise/entities/Product'
 
 export class InMemoryProductRepository implements ProductRepository {
+
+  public items: Product[] = []
  
   async findById(id: string): Promise<Product | null> {
     const product = this.items.find((item) => item.id.toString() === id)
@@ -13,7 +15,6 @@ export class InMemoryProductRepository implements ProductRepository {
     return product
   }
 
-  public items: Product[] = []
 
   async create(product: Product) {
     this.items.push(product)
