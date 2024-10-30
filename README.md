@@ -51,3 +51,33 @@ src/
 │
 └── tests/                  # Testes unitários com Vitest
     └── unit/               # Testes organizados por módulos
+
+
+## Instruções de Instalação e Configuração
+
+### Pré-requisitos
+
+- **Node.js** (v16+)
+- **MongoDB**
+
+### Passo a Passo de Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/andersonigfrancisco/DDDNodeJs.git
+   cd DDDNodeJs
+
+2. Instale as dependências:
+   npm install
+
+3. Configure o banco de dados MongoDB e adicione o URI de conexão ao arquivo .env:
+   MONGODB_URI=mongodb://localhost:27017/produtoDB
+
+4. Configure o banco de dados MongoDB e adicione o URI de conexão ao arquivo .env:
+   MONGODB_URI=mongodb://localhost:27017/produtoDB
+
+## Arquitetura e Estrutura de Diretórios
+
+- [npm run start](#)  Inicia a aplicação.
+- [npm run dev](#)  Inicia a aplicação em modo de desenvolvimento com reinicialização automática.
+- [npm run test](#)  Executa os testes unitários.
