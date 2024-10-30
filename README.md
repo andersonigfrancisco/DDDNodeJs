@@ -63,7 +63,7 @@ src/
 
 ### Pré-requisitos
 
-- **Node.js** (v16+)
+- **Node.js** (v21.6.1+)
 - **MongoDB**
 
 ---
