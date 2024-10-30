@@ -23,6 +23,7 @@ Este sistema utiliza princípios de DDD (Domain-Driven Design) e Arquitetura Lim
 
 ---
 
+
 ## Arquitetura e Estrutura de Diretórios
 
 A estrutura de diretórios segue os princípios do DDD e da Arquitetura Limpa:
@@ -51,6 +52,8 @@ src/
 │
 └── tests/                  # Testes unitários com Vitest
     └── unit/               # Testes organizados por módulos
+
+```
 
 ---
 
@@ -90,3 +93,5 @@ src/
 - [npm run test](#)  Executa os testes unitários.
 
 ---
+
+
