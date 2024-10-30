@@ -1,5 +1,5 @@
-import { Product } from '../../entities/Product'
-import { ProductRepository } from '../../repositories/product-repository'
+import { Product } from '../../enterprise/entities/Product'
+import { ProductRepository } from '../repositories/product-repository'
 
 interface ProductUserCaseRequeste {
   productName: string

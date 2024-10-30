@@ -1,6 +1,6 @@
 import { UserUseCase } from './user'
-import { UserRepository } from '../../repositories/user-repository'
-import { User } from '../../entities/user'
+import { UserRepository } from '../../../product/application/repositories/user-repository'
+import { User } from '../../enterprise/entities/user'
 
 const userRepository: UserRepository = {
   create: async (user: User) => {

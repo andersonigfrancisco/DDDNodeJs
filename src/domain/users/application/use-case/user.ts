@@ -1,5 +1,5 @@
-import { User } from '../../entities/user'
-import { UserRepository } from '../../repositories/user-repository'
+import { User } from '../../enterprise/entities/user'
+import { UserRepository } from '../repositories/user-repository'
 
 interface UserUseCaseRequest {
   UserName: string

@@ -1,6 +1,6 @@
 import { ProductUseCase } from './product'
-import { ProductRepository } from '../../repositories/product-repository'
-import { Product } from '../../entities/Product'
+import { ProductRepository } from '../repositories/product-repository'
+import { Product } from '../../enterprise/entities/Product'
 
 const testeProductRepository: ProductRepository = {
   create: async (product: Product) => {
