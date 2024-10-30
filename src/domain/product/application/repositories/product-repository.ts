@@ -1,5 +1,5 @@
 import { Product } from '../../enterprise/entities/Product'
 
 export interface ProductRepository {
-  create(product: Product): Promise<Product>
+  create(product: Product): Promise<void>
 }

@@ -1,22 +1,23 @@
 import { ProductUseCase } from './product'
-import { ProductRepository } from '../repositories/product-repository'
-import { Product } from '../../enterprise/entities/Product'
+import { InMemoryProductRepository } from 'test/repositories/in-memory-product-repository'
 
-const testeProductRepository: ProductRepository = {
-  create: async (product: Product) => {
-    return product
-  },
-}
+let inMemoryProductRepository: InMemoryProductRepository
+let sut: ProductUseCase
 
-test('create an product', async () => {
-  const productUseCase = new ProductUseCase(testeProductRepository)
-
-  const product = await productUseCase.execute({
-    productName: 'anderson',
-    productCategory: 'teste',
-    productDescription: 'teste',
-    productPrice: 1,
+describe('Create Product', () => {
+  beforeEach(() => {
+    inMemoryProductRepository = new InMemoryProductRepository()
+    sut = new ProductUseCase(inMemoryProductRepository)
   })
 
-  expect(product.product.category).toEqual('anderson')
+  it('should be able to create product', async () => {
+    const { product } = await sut.execute({
+      productName: 'anderson',
+      productCategory: 'teste',
+      productDescription: 'teste',
+      productPrice: 1,
+    })
+    expect(product.id).toBeTruthy()
+    expect(inMemoryProductRepository.items[0].id).toEqual(product.id)
+  })
 })

@@ -1,21 +1,23 @@
 import { UserUseCase } from './user'
-import { UserRepository } from '../repositories/user-repository'
-import { User } from '../../enterprise/entities/user'
+import { InMemoryUsersRepository } from 'test/repositories/in-memory-users-repository'
 
-const userRepository: UserRepository = {
-  create: async (user: User) => {
-    return user
-  },
-}
+let inMemoryProductRepository: InMemoryUsersRepository
+let sut: UserUseCase
 
-test('create an product', async () => {
-  const userUseCase = new UserUseCase(userRepository)
-
-  const user = await userUseCase.execute({
-    UserName: 'anderson',
-    UserEmail: 'teste',
-    UserPassword: 'teste',
+describe('Create users', () => {
+  beforeEach(() => {
+    inMemoryProductRepository = new InMemoryUsersRepository()
+    sut = new UserUseCase(inMemoryProductRepository)
   })
 
-  expect(user.user.email).toEqual('teste')
+  it('should be able to create users', async () => {
+    const { user } = await sut.execute({
+      UserName: 'anderson',
+      UserEmail: 'teste',
+      UserPassword: 'teste',
+    })
+
+    expect(user.id).toBeTruthy()
+    expect(inMemoryProductRepository.items[0].id).toEqual(user.id)
+  })
 })
