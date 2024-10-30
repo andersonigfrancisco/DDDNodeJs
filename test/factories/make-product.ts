@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker'
 import {
   Product,
-  ProductProps,
 } from '@/domain/product/enterprise/entities/Product'
 import { UniqueEntityId } from '@/cors/unique-entity-id'
+import { CreateProductDTO } from '@/domain/product/shared/product-dtos'
 
 export function makeProduct(
-  override: Partial<ProductProps> = {},
+  override: Partial<CreateProductDTO> = {},
   id?: UniqueEntityId,
 ) {
   const product = Product.create(
