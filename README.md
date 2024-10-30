@@ -29,26 +29,25 @@ A estrutura de diretórios segue os princípios do DDD e da Arquitetura Limpa:
 
 ```plaintext
 src/
-├── domain/                 # Entidades de domínio e interfaces principais
-│   ├── entities/           # Modelos de entidades (ex.: Product)
-│   ├── interfaces/         # Contratos e interfaces para o repositório e serviço
-│   └── dtos/               # Data Transfer Objects (DTOs)
+├── domain/                 # Regras de negócios empresariais
+│   ├── application/
+│   │   application/           
+│   ├── enterprise
+│   │     ├──entities         
+│   └── dtos/               
 │
-├── infrastructure/         # Implementação de persistência e infraestrutura
-│   └── database/
-│       └── models/         # Modelos Mongoose para interação com MongoDB
+├── Drivers/         # Estrutura e unidades
+│   └── lib/
+│       └── repositories        
 │
-├── application/            # Lógica de aplicação
-│   ├── repositories/       # Implementação dos repositórios de domínio
-│   └── services/           # Serviços de negócios (ex.: ProductService)
+├── Adapter/            # Adaptadores de interface
+│   ├── controllers/       # Implementação dos repositórios de domínio
+│   └── routes/           # Serviços de negócios (ex.: ProductService)
 │
-├── presentation/           # Camada de apresentação e controladores HTTP
-│   ├── controllers/        # Controladores (ex.: ProductController)
-│   └── routes/             # Rotas organizadas para APIs
-│
-├── shared/                 # Utilitários e erros compartilhados
+├── cors/                 # Utilitários e erros compartilhados
 │   ├── errors/             # Classe de erro (ex.: AppError)
-│   └── utils/              # Funções utilitárias comuns
+│   └── types/    
+│   └── either.ts/           # Personalização de erros genericos
 │
-└── tests/                  # Testes unitários com Jest
+└── tests/                  # Testes unitários com Vitest
     └── unit/               # Testes organizados por módulos
