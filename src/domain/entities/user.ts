@@ -1,6 +1,6 @@
-import { Entity } from "../../cors/entity";
-import { Optional } from "../../cors/types/optional";
-import { UniqueEntityId } from "../../cors/unique-entity-id";
+import { Entity } from "@/cors/entity";
+import { Optional } from "@/cors/types/optional";
+import { UniqueEntityId } from "@/cors/unique-entity-id";
 
 interface UserProps{
     name: string;
@@ -28,13 +28,32 @@ export class User extends  Entity<UserProps>{
         return this.props.createdAt;
     }
     get updatedAt(){
+        
         return this.props.updatedAt;
     }
 
-    static create(
-        props:Optional<UserProps,'createdAt'>, 
-        id?:UniqueEntityId)
-        {
+    private touch(){
+        this.props.updatedAt = new Date()
+    }
+
+    set name(name:string){
+        this.props.name = name;
+        this.touch();
+    }
+
+    set password(password:string){
+        this.props.password = password;
+        this.touch();
+    }
+
+    set email(email:string){
+        this.props.email = email;
+        this.touch();
+    }
+
+    static create(props:Optional<UserProps,'createdAt'>, id?:UniqueEntityId)
+    {
+    
         const data = new User({...props,createdAt: new Date()},id)
 
         return data;

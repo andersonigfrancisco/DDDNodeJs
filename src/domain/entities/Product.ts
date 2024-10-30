@@ -1,6 +1,6 @@
-import { Entity } from "../../cors/entity";
-import { Optional } from "../../cors/types/optional";
-import { UniqueEntityId } from "../../cors/unique-entity-id";
+import { Entity } from "@/cors/entity";
+import { Optional } from "@/cors/types/optional";
+import { UniqueEntityId } from "@/cors/unique-entity-id";
 
 interface ProductProps{
     name: string;
@@ -16,7 +16,7 @@ export class Product extends Entity<ProductProps>{
     get data(){
         return this.props;
     }
-    get dacategoryta(){
+    get category(){
         return this.props.category;
     }
     get name(){
@@ -35,10 +35,32 @@ export class Product extends Entity<ProductProps>{
         return this.props.updatedAt;
     }
 
-    static create(
-        props:Optional<ProductProps,'createdAt'>, 
-        id?:UniqueEntityId)
-        {
+    private touch(){
+        this.props.updatedAt = new Date()
+    }
+
+    set category(acategory:string){
+        this.props.category = acategory;
+        this.touch();
+    }
+
+    set name(name:string){
+        this.props.name = name;
+        this.touch();
+    }
+
+    set description(description:string){
+        this.props.description = description;
+        this.touch();
+    }
+
+    set price(price:number){
+        this.props.price = price;
+        this.touch();
+    }
+
+    static create(props:Optional<ProductProps,'createdAt'>, id?:UniqueEntityId)
+    {
         const data = new Product({...props,createdAt: new Date() },id)
 
         return data;
