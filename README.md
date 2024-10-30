@@ -1,3 +1,6 @@
+![Estrutura de desacopulamento do CleanArchitecture ](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
+
+
 # Sistema de Gestão de Produtos - Backend
 
 Este projeto é um sistema de gestão de produtos desenvolvido para demonstrar habilidades em Node.js, TypeScript, Mongoose, Domain-Driven Design (DDD) e Arquitetura Limpa. A aplicação permite o gerenciamento de produtos com operações de criação, leitura, atualização e exclusão, estruturada para promover a manutenção e escalabilidade.
@@ -49,6 +52,3 @@ src/
 │
 └── tests/                  # Testes unitários com Jest
     └── unit/               # Testes organizados por módulos
-
-## Fluxo de CleanArchitecture
-![Estrutura de desacopulamento do CleanArchitecture ](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
