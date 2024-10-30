@@ -1,4 +1,3 @@
-import {expect, test} from 'vitest';
 import {UserUseCase} from './user'
 import {UserRepository} from '../../repositories/user-repository'
 import { User } from '../../entities/user';
