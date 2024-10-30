@@ -1,4 +1,5 @@
 // import { Product } from '../../enterprise/entities/Product'
+import { Either, rigth } from '@/cors/either'
 import { Product } from '../../enterprise/entities/Product'
 import { ProductRepository } from '../repositories/product-repository'
 
@@ -6,9 +7,9 @@ interface GetByIdProductUserCaseRequeste {
   productId: string
 }
 
-interface ProductUserCaseResponse {
-  product: Product
-}
+type ProductUserCaseResponse  = Either<null, {product:Product}>
+
+
 
 export class GetByIdProductUseCase {
   constructor(private productRepository: ProductRepository) {}
@@ -22,8 +23,8 @@ export class GetByIdProductUseCase {
       return null
     }
 
-    return {
-      product,
-    }
+    return rigth({
+      product
+    })
   }
 }

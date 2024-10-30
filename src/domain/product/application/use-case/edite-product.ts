@@ -1,6 +1,8 @@
 // import { Product } from '../../enterprise/entities/Product'
+import { Either, left, rigth } from '@/cors/either'
 import { Product } from '../../enterprise/entities/Product'
 import { ProductRepository } from '../repositories/product-repository'
+import { ResourceNotFoundError } from './errors/resource-not-found'
 
 interface EditProductUserCaseRequeste {
   productId: string
@@ -10,9 +12,8 @@ interface EditProductUserCaseRequeste {
   productCategory: string
 }
 
-interface ProductUserCaseResponse {
-  product: Product
-}
+type ProductUserCaseResponse  = Either<ResourceNotFoundError, {product:Product}>
+
 
 export class EdirProductUseCase {
   constructor(private productRepository: ProductRepository) {}
@@ -27,7 +28,7 @@ export class EdirProductUseCase {
     const product = await this.productRepository.findById(productId)
 
     if (!product) {
-      throw new Error('Product not found!')
+      return left(new ResourceNotFoundError())
     }
     product.category = productCategory
     product.name = productName
@@ -36,8 +37,8 @@ export class EdirProductUseCase {
 
     await this.productRepository.save(product)
 
-    return {
-      product,
-    }
+    return rigth({
+      product
+    })
   }
 }

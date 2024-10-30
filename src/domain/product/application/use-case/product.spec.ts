@@ -11,13 +11,14 @@ describe('Create Product', () => {
   })
 
   it('should be able to create product', async () => {
-    const { product } = await sut.execute({
+    const result  = await sut.execute({
       productName: 'anderson',
       productCategory: 'teste',
       productDescription: 'teste',
       productPrice: 1,
     })
-    expect(product.id).toBeTruthy()
-    expect(inMemoryProductRepository.items[0].id).toEqual(product.id)
+
+    expect(result.isRight()).toBe(true)
+    expect(inMemoryProductRepository.items[0]).toEqual(result.value?.product)
   })
 })

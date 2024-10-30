@@ -1,4 +1,5 @@
 // import { Product } from '../../enterprise/entities/Product'
+import { Either, rigth } from '@/cors/either'
 import { Product } from '../../enterprise/entities/Product'
 import { ProductRepository } from '../repositories/product-repository'
 
@@ -7,9 +8,8 @@ interface FetchProductUserCaseRequeste {
   limit:number
 }
 
-interface ProductUserCaseResponse {
-  product: Product[]
-}
+type ProductUserCaseResponse  = Either<null, {product:Product[]}>
+
 
 export class FetchProductUseCase {
   constructor(private productRepository: ProductRepository) {}
@@ -21,8 +21,8 @@ export class FetchProductUseCase {
 
     const product = await this.productRepository.findMany({page,limit })
 
-    return {
-      product,
-    }
+    return rigth({
+      product
+    })
   }
 }

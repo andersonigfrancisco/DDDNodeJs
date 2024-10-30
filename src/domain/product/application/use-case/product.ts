@@ -1,5 +1,7 @@
+import { Either, rigth } from '@/cors/either'
 import { Product } from '../../enterprise/entities/Product'
 import { ProductRepository } from '../repositories/product-repository'
+
 
 interface ProductUserCaseRequeste {
   productName: string
@@ -8,9 +10,12 @@ interface ProductUserCaseRequeste {
   productCategory: string
 }
 
-interface ProductUserCaseResponse {
-  product: Product
-}
+type ProductUserCaseResponse  = Either<
+  null, 
+  {
+    product:Product
+  }
+>
 
 export class ProductUseCase {
   constructor(private productRepository: ProductRepository) {}
@@ -29,7 +34,9 @@ export class ProductUseCase {
     })
 
     await this.productRepository.create(product)
-
-    return { product }
+    
+    return rigth({
+      product
+    })
   }
 }

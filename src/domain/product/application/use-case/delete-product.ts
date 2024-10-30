@@ -1,11 +1,13 @@
 // import { Product } from '../../enterprise/entities/Product'
+import { Either, left, rigth } from '@/cors/either'
 import { ProductRepository } from '../repositories/product-repository'
+import { ResourceNotFoundError } from './errors/resource-not-found'
 
 interface DeleteProductUserCaseRequeste {
   productId: string
 }
 
-interface ProductUserCaseResponse {}
+type ProductUserCaseResponse = Either<ResourceNotFoundError, {}>
 
 export class DeleteProductUseCase {
   constructor(private productRepository: ProductRepository) {}
@@ -16,10 +18,10 @@ export class DeleteProductUseCase {
     const product = await this.productRepository.findById(productId)
 
     if (!product) {
-      throw new Error('Product not found!')
+      return left(new ResourceNotFoundError())
     }
     await this.productRepository.delete(product)
 
-    return {}
+    return rigth({})
   }
 }
