@@ -1,68 +1,75 @@
-import { Entity } from "@/cors/entity";
-import { Optional } from "@/cors/types/optional";
-import { UniqueEntityId } from "@/cors/unique-entity-id";
+import { Entity } from '@/cors/entity'
+import { Optional } from '@/cors/types/optional'
+import { UniqueEntityId } from '@/cors/unique-entity-id'
 
-interface ProductProps{
-    name: string;
-    description: string;
-    price: number;
-    category: string;
-    createdAt:Date;
-    updatedAt?:Date;
+interface ProductProps {
+  name: string
+  description: string
+  price: number
+  category: string
+  createdAt: Date
+  updatedAt?: Date
 }
 
-export class Product extends Entity<ProductProps>{
+export class Product extends Entity<ProductProps> {
+  get data() {
+    return this.props
+  }
 
-    get data(){
-        return this.props;
-    }
-    get category(){
-        return this.props.category;
-    }
-    get name(){
-        return this.props.name;
-    }
-    get price(){
-        return this.props.price;
-    }
-    get description(){
-        return this.props.description;
-    }
-    get createdAt(){
-        return this.props.createdAt;
-    }
-    get updatedAt(){
-        return this.props.updatedAt;
-    }
+  get category() {
+    return this.props.category
+  }
 
-    private touch(){
-        this.props.updatedAt = new Date()
-    }
+  get name() {
+    return this.props.name
+  }
 
-    set category(acategory:string){
-        this.props.category = acategory;
-        this.touch();
-    }
+  get price() {
+    return this.props.price
+  }
 
-    set name(name:string){
-        this.props.name = name;
-        this.touch();
-    }
+  get description() {
+    return this.props.description
+  }
 
-    set description(description:string){
-        this.props.description = description;
-        this.touch();
-    }
+  get createdAt() {
+    return this.props.createdAt
+  }
 
-    set price(price:number){
-        this.props.price = price;
-        this.touch();
-    }
+  get updatedAt() {
+    return this.props.updatedAt
+  }
 
-    static create(props:Optional<ProductProps,'createdAt'>, id?:UniqueEntityId)
-    {
-        const data = new Product({...props,createdAt: new Date() },id)
+  private touch() {
+    this.props.updatedAt = new Date()
+  }
 
-        return data;
-    }
+  set category(acategory: string) {
+    this.props.category = acategory
+    this.touch()
+  }
+
+  set name(name: string) {
+    this.props.name = name
+    this.touch()
+  }
+
+  set description(description: string) {
+    this.props.description = description
+    this.touch()
+  }
+
+  set price(price: number) {
+    this.props.price = price
+    this.touch()
+  }
+
+  static create(
+    props: Optional<ProductProps, 'createdAt'>,
+    id?: UniqueEntityId,
+  ) {
+    const data = new Product({ ...props, createdAt: new Date() }, id)
+
+    return data
+  }
 }

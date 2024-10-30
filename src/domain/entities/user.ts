@@ -1,61 +1,62 @@
-import { Entity } from "@/cors/entity";
-import { Optional } from "@/cors/types/optional";
-import { UniqueEntityId } from "@/cors/unique-entity-id";
+import { Entity } from '@/cors/entity'
+import { Optional } from '@/cors/types/optional'
+import { UniqueEntityId } from '@/cors/unique-entity-id'
 
-interface UserProps{
-    name: string;
-    password:string;
-    email: string;
-    createdAt:Date;
-    updatedAt?:Date;
+interface UserProps {
+  name: string
+  password: string
+  email: string
+  createdAt: Date
+  updatedAt?: Date
 }
 
-export class User extends  Entity<UserProps>{
+export class User extends Entity<UserProps> {
+  get data() {
+    return this.props
+  }
 
-    get data(){
-        return this.props;
-    }
-    get name(){
-        return this.props.name;
-    }
-    get password(){
-        return this.props.password;
-    }
-    get daemailta(){
-        return this.props.email;
-    }
-    get createdAt(){
-        return this.props.createdAt;
-    }
-    get updatedAt(){
-        
-        return this.props.updatedAt;
-    }
+  get name() {
+    return this.props.name
+  }
 
-    private touch(){
-        this.props.updatedAt = new Date()
-    }
+  get password() {
+    return this.props.password
+  }
 
-    set name(name:string){
-        this.props.name = name;
-        this.touch();
-    }
+  get email() {
+    return this.props.email
+  }
 
-    set password(password:string){
-        this.props.password = password;
-        this.touch();
-    }
+  get createdAt() {
+    return this.props.createdAt
+  }
 
-    set email(email:string){
-        this.props.email = email;
-        this.touch();
-    }
+  get updatedAt() {
+    return this.props.updatedAt
+  }
 
-    static create(props:Optional<UserProps,'createdAt'>, id?:UniqueEntityId)
-    {
-    
-        const data = new User({...props,createdAt: new Date()},id)
+  private touch() {
+    this.props.updatedAt = new Date()
+  }
 
-        return data;
-    }
+  set name(name: string) {
+    this.props.name = name
+    this.touch()
+  }
+
+  set email(email: string) {
+    this.props.email = email
+    this.touch()
+  }
+
+  set password(password: string) {
+    this.props.password = password
+    this.touch()
+  }
+
+  static create(props: Optional<UserProps, 'createdAt'>, id?: UniqueEntityId) {
+    const data = new User({ ...props, createdAt: new Date() }, id)
+
+    return data
+  }
 }

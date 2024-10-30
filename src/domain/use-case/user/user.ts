@@ -1,27 +1,22 @@
-import { User } from "../../entities/user";
-import { UserRepository } from "../../repositories/user-repository"
+import { User } from '../../entities/user'
+import { UserRepository } from '../../repositories/user-repository'
 
-interface UserUseCaseRequest{
-    UserName:string,
-    UserPassword:string,
-    UserEmail: string
+interface UserUseCaseRequest {
+  UserName: string
+  UserPassword: string
+  UserEmail: string
 }
 
+export class UserUseCase {
+  constructor(private userRepository: UserRepository) {}
 
-export class UserUseCase{
+  async execute({ UserName, UserEmail, UserPassword }: UserUseCaseRequest) {
+    const data = User.create({
+      email: UserEmail,
+      name: UserName,
+      password: UserPassword,
+    })
 
-    constructor(
-        private userRepository: UserRepository
-    ){}
-
-    async execute({UserName,UserEmail,UserPassword}:UserUseCaseRequest)
-    {
-        const data =  User.create({
-            email:UserEmail,
-            name:UserName,
-            password:UserPassword
-        })
-        
-        return await this.userRepository.create(data);
-    }
+    return await this.userRepository.create(data)
+  }
 }
