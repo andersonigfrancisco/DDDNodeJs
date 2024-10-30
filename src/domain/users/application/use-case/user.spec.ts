@@ -1,5 +1,5 @@
 import { UserUseCase } from './user'
-import { UserRepository } from '../../../product/application/repositories/user-repository'
+import { UserRepository } from '../repositories/user-repository'
 import { User } from '../../enterprise/entities/user'
 
 const userRepository: UserRepository = {
@@ -11,11 +11,11 @@ const userRepository: UserRepository = {
 test('create an product', async () => {
   const userUseCase = new UserUseCase(userRepository)
 
-  const data = await userUseCase.execute({
+  const user = await userUseCase.execute({
     UserName: 'anderson',
     UserEmail: 'teste',
     UserPassword: 'teste',
   })
 
-  expect(data.data.password).toEqual('teste')
+  expect(user.user.email).toEqual('teste')
 })

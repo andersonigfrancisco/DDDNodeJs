@@ -12,10 +12,6 @@ interface ProductProps {
 }
 
 export class Product extends Entity<ProductProps> {
-  get data() {
-    return this.props
-  }
-
   get category() {
     return this.props.category
   }

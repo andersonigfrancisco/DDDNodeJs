@@ -8,6 +8,10 @@ interface ProductUserCaseRequeste {
   productCategory: string
 }
 
+interface ProductUserCaseResponse {
+  product: Product
+}
+
 export class ProductUseCase {
   constructor(private productRepository: ProductRepository) {}
 
@@ -16,16 +20,16 @@ export class ProductUseCase {
     productDescription,
     productCategory,
     productPrice,
-  }: ProductUserCaseRequeste) {
-    const data = Product.create({
+  }: ProductUserCaseRequeste): Promise<ProductUserCaseResponse> {
+    const product = Product.create({
       category: productCategory,
       description: productDescription,
       name: productName,
       price: productPrice,
     })
 
-    await this.productRepository.create(data)
+    await this.productRepository.create(product)
 
-    return data
+    return { product }
   }
 }

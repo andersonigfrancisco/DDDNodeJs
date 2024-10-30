@@ -11,10 +11,6 @@ interface UserProps {
 }
 
 export class User extends Entity<UserProps> {
-  get data() {
-    return this.props
-  }
-
   get name() {
     return this.props.name
   }

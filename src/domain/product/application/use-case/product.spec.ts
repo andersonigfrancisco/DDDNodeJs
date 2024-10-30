@@ -11,12 +11,12 @@ const testeProductRepository: ProductRepository = {
 test('create an product', async () => {
   const productUseCase = new ProductUseCase(testeProductRepository)
 
-  const data = await productUseCase.execute({
+  const product = await productUseCase.execute({
     productName: 'anderson',
     productCategory: 'teste',
     productDescription: 'teste',
     productPrice: 1,
   })
 
-  expect(data.data.name).toEqual('anderson')
+  expect(product.product.category).toEqual('anderson')
 })
