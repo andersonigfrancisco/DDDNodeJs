@@ -2,7 +2,7 @@ import { Entity } from '@/cors/entity'
 import { Optional } from '@/cors/types/optional'
 import { UniqueEntityId } from '@/cors/unique-entity-id'
 
-interface ProductProps {
+export interface ProductProps {
   name: string
   description: string
   price: number
