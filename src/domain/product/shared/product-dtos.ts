@@ -6,5 +6,5 @@ export interface CreateProductDTO {
     category: string
     createdAt: Date
     updatedAt?: Date
-  }
+}
   
