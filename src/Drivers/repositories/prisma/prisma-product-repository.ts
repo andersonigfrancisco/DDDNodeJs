@@ -15,9 +15,10 @@ export class PrismaProductRepository implements ProductRepository {
     }
 
     async create(data: Product) {
+        
         await prisma.product.create({
             data: {
-                id: data.id.toString(),
+                //id: data.id.toString(),
                 name: data.name,
                 description: data.description,
                 price: data.price,

@@ -14,12 +14,13 @@ describe('delete Product By Id', () => {
   })
 
   it('should be able to delete By Id Product', async () => {
-    const newProduct = makeProduct({}, new UniqueEntityId('product-1'))
+    const id = new UniqueEntityId()
+    const newProduct = makeProduct({}, id)
 
     await inMemoryProductRepository.create(newProduct)
 
     await sut.execute({
-      productId: 'product-1',
+      productId: id.toString(),
     })
 
     expect(inMemoryProductRepository.items).toHaveLength(0)

@@ -100,6 +100,7 @@ src/
 
 - [npx prisma migrate deploy](#)  Inicia a aplicação.
 - [npx prisma generate](#)  Inicia a aplicação em modo de desenvolvimento com reinicialização automática.
+- [npx prisma db push](#)  Inicia a aplicação em modo de desenvolvimento com reinicialização automática.
 
 ---
 

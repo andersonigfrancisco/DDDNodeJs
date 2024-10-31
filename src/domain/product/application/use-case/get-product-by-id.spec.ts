@@ -13,7 +13,6 @@ describe('get Product', () => {
   beforeEach(() => {
     inMemoryProductRepository = new InMemoryProductRepository()
     sut = new GetByIdProductUseCase(inMemoryProductRepository)
-    _sut = new FetchProductUseCase(prismaProductRepository)
   })
 
   it('should be able to create product', async () => {
@@ -24,10 +23,6 @@ describe('get Product', () => {
     const product = await sut.execute({
       productId: newProduct.id.toString(),
     })
-
-    const {value} = await _sut.execute({limit:10,page:1})
-
-    console.log(value?.product)
 
     expect(product).toBeTruthy()
     expect(inMemoryProductRepository.items[0].id).toEqual(newProduct.id)
