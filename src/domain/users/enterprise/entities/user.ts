@@ -2,7 +2,7 @@ import { Entity } from '@/cors/entity'
 import { Optional } from '@/cors/types/optional'
 import { UniqueEntityId } from '@/cors/unique-entity-id'
 
-interface UserProps {
+export interface UserProps {
   name: string
   password: string
   email: string
@@ -55,4 +55,31 @@ export class User extends Entity<UserProps> {
 
     return data
   }
+
+  static mapToProductEntity(userData: any): any {
+
+    
+    const user = User.create({
+        name: userData.name,
+        email: userData.email,
+        password: userData.password,
+        createdAt: userData.createdAt,
+        updatedAt: userData.updatedAt
+    }, userData.id);
+
+    // Retorne um objeto com os atributos desestruturados
+    return {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt
+    };
 }
+
+
+}
+
+
+
