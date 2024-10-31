@@ -1,5 +1,4 @@
 export interface CreateProductDTO {
-    id?: string;
     name: string
     description: string
     price: number
@@ -7,4 +6,7 @@ export interface CreateProductDTO {
     createdAt: Date
     updatedAt?: Date
 }
-  
+
+export interface UpdateProductDTO  extends CreateProductDTO{
+    productId: string;
+}
