@@ -33,8 +33,7 @@ export class PrismaProductRepository implements ProductRepository {
             skip: (page - 1) * limit,
             take: limit,
         }); 
-
-        return products.map(Product.mapToProductEntity);
+        return products.map(productData => Product.mapToProductEntity(productData));
     }
 
     async save(data: Product): Promise<void> {

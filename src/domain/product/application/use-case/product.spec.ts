@@ -13,6 +13,8 @@ describe('Create Product', () => {
     sut = new ProductUseCase(inMemoryProductRepository)
     prismaProductRepository = new PrismaProductRepository()
     _sut = new ProductUseCase(prismaProductRepository)
+  
+    
   })
 
   it('should be able to create product', async () => {
@@ -23,14 +25,12 @@ describe('Create Product', () => {
       productPrice: 1,
     })
 
-    const {value} =  await _sut.execute({
+    const {isRight} =  await _sut.execute({
       productName: 'anderson',
       productCategory: 'teste',
       productDescription: 'teste',
       productPrice: 100,
     })
-
-    console.log(value?.product)
 
     expect(result.isRight()).toBe(true)
     expect(inMemoryProductRepository.items[0]).toEqual(result.value?.product)

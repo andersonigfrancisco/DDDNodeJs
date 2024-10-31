@@ -88,9 +88,18 @@ src/
 
 ## Arquitetura e Estrutura de Diretórios
 
-- [npm run start](#)  Inicia a aplicação.
-- [npm run dev](#)  Inicia a aplicação em modo de desenvolvimento com reinicialização automática.
+- [npm run start:prod](#)  Inicia a aplicação.
+- [npm run start:dev](#)  Inicia a aplicação em modo de desenvolvimento com reinicialização automática.
 - [npm run test](#)  Executa os testes unitários.
+
+---
+
+---
+
+## Running startup commands
+
+- [npx prisma migrate deploy](#)  Inicia a aplicação.
+- [npx prisma generate](#)  Inicia a aplicação em modo de desenvolvimento com reinicialização automática.
 
 ---
 

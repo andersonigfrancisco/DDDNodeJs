@@ -3,7 +3,7 @@ import cors from '@fastify/cors'
 import { ZodError } from 'zod'
 import { env } from '@/env'
 import { productRoutes } from '@/Adapter/controllers/product/route'
-import { AppError } from '@/domain/product/application/use-case/errors/appErrors'
+import { left } from './cors/either'
 
 
 export const app = fastify()
@@ -23,7 +23,7 @@ app.setErrorHandler((error, _, reply) => {
   if (env.NODE_ENV != 'dev')
     console.error(error)
 
-  if (error instanceof AppError) {
+  if(error instanceof left){
     return reply
       .status(400)
       .send({ message: error })

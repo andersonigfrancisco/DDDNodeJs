@@ -15,6 +15,7 @@ export class DeleteProductUseCase {
   async execute({
     productId,
   }: DeleteProductUserCaseRequeste): Promise<ProductUserCaseResponse> {
+
     const product = await this.productRepository.findById(productId)
 
     if (!product) {
